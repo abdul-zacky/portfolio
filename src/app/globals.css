@@ -1,21 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f1b2e;
+  --foreground: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a1425;
+    --foreground: #ffffff;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass {
+    background: rgba(15, 27, 46, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), 
+                0 0 50px 0 rgba(59, 130, 246, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  
+  .glass-dark {
+    background: rgba(0, 10, 35, 0.35);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-hover:hover {
+    background: rgba(0, 20, 55, 0.35);
+    border: 1px solid rgba(59, 130, 246, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 50px 0 rgba(0, 0, 0, 0.5),
+                0 0 80px 0 rgba(59, 130, 246, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #ffffff, #e0f2fe, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .neural-network {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .neural-node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(59, 130, 246, 0.8);
+    border-radius: 50%;
+    animation: pulse-node 3s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  
+  .neural-node::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    animation: expand-ring 4s ease-in-out infinite;
+  }
+  
+  .neural-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+    animation: data-flow 2s ease-in-out infinite;
+    transform-origin: left center;
+  }
+  
+  @keyframes pulse-node {
+    0%, 100% { 
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes expand-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(3);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes data-flow {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+  }
+  
+  .circuit-pattern {
+    background-image: 
+      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+      linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  
+  .tech-grid {
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
+  .hero-animation {
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .parallax-bg {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .navbar-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  
+  .navbar-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .futuristic-font {
+    font-family: 'Orbitron', monospace;
+  }
+  
+  .tech-font {
+    font-family: 'Exo 2', sans-serif;
+  }
 }
