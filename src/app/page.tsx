@@ -1,10 +1,11 @@
 'use client';
 
 import Footer from '@/components/Footer';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement>(null);
+  const [showECGModal, setShowECGModal] = useState(false);
 
   useEffect(() => {
     // Ensure page starts at top
@@ -61,14 +62,17 @@ export default function Home() {
         
         <div className="relative z-10 text-center px-6">
           <div className="glass rounded-3xl p-12 max-w-4xl mx-auto hero-animation">
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl futuristic-font tracking-wider">
+            <h1 className="text-6xl md:text-8xl font-bold mb-2 text-white drop-shadow-2xl futuristic-font tracking-wider">
               zac
             </h1>
+            <p className="text-lg md:text-xl text-white/70 mb-6 font-light drop-shadow-lg">
+              Abdul Zacky
+            </p>
             <p className="text-xl md:text-2xl text-white mb-8 leading-relaxed font-medium drop-shadow-xl tech-font">
-              Creative Developer crafting innovative digital experiences
+              AI Engineer & Developer building intelligent digital solutions
             </p>
             <p className="text-lg text-white mb-10 max-w-2xl mx-auto drop-shadow-lg tech-font font-light">
-              Passionate about modern web technologies, AI, and creating solutions that make a difference
+              Specializing in machine learning, neural networks, and modern web technologies to create AI-powered applications that solve real-world problems
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -95,24 +99,24 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg futuristic-font">About Me</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="glass rounded-2xl p-8">
+          <div className="grid md:grid-cols-2 gap-12 items-stretch">
+            <div className="glass rounded-2xl p-8 flex flex-col">
               <h3 className="text-2xl font-bold text-white mb-6 drop-shadow-md">My Journey</h3>
               <p className="text-white leading-relaxed mb-6 drop-shadow-sm">
-                Hi, I&apos;m Zac, a passionate web developer with a deep love for creating
-                innovative digital experiences. I specialize in modern web technologies
-                and AI-driven solutions that push the boundaries of what&apos;s possible.
+                Hi, I&apos;m Zac, an AI engineer and developer passionate about building intelligent systems
+                that solve real-world problems. I specialize in deep learning, neural networks, and
+                creating AI-powered applications with clinical-grade precision and reliability.
               </p>
               <p className="text-white leading-relaxed drop-shadow-sm">
-                With expertise in Next.js, React, Python, and machine learning, I bridge
-                the gap between creative design and technical excellence to deliver
-                solutions that truly make an impact.
+                With expertise in PyTorch, Python, and modern web technologies, I bridge
+                the gap between cutting-edge AI research and practical engineering solutions,
+                delivering intelligent systems that truly make an impact in healthcare and beyond.
               </p>
             </div>
-            <div className="glass rounded-2xl p-8">
+            <div className="glass rounded-2xl p-8 flex flex-col">
               <h3 className="text-2xl font-bold text-white mb-6 drop-shadow-md">Skills & Technologies</h3>
               <div className="grid grid-cols-2 gap-4">
-                {['React/Next.js', 'TypeScript', 'Python', 'Machine Learning', 'Tailwind CSS', 'Node.js', 'AI/Neural Networks', 'Data Visualization'].map((skill, index) => (
+                {['Machine Learning', 'AI/Neural Networks', 'React/Next.js', 'TypeScript', 'Python', 'Tailwind CSS', 'Node.js'].map((skill, index) => (
                   <div key={index} className="glass-dark rounded-lg p-3 text-center">
                     <span className="text-white font-medium drop-shadow-sm">{skill}</span>
                   </div>
@@ -133,32 +137,40 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
+                title: 'Clinical ECG Classification',
+                description: 'Multi-branch deep learning system for automated ECG interpretation detecting 71 cardiac conditions with clinical-grade visualization.',
+                tech: ['PyTorch', 'Deep Learning', 'Medical AI'],
+                link: null,
+                isExternal: false,
+                isECG: true,
+              },
+              {
                 title: 'DataClair',
                 description: 'Advanced data visualization and analytics platform built with modern web technologies.',
-                tech: ['Next.js', 'TypeScript', 'Data Viz'],
+                tech: ['Machine Learning', 'Data Science', 'Next.js'],
                 link: 'https://dataclair.vercel.app',
                 isExternal: true,
               },
               {
                 title: 'Neural Style Transfer',
                 description: 'Open-source AI project for artistic style transfer using neural networks.',
-                tech: ['Python', 'TensorFlow', 'Computer Vision'],
+                tech: ['PyTorch', 'Computer Vision', "Deep Learning"],
                 link: 'https://github.com/abdul-zacky/neural-style-transfer',
                 isExternal: true,
               },
-              {
-                title: 'Personal Portfolio',
-                description: 'Modern glassmorphic portfolio showcasing my projects and skills.',
-                tech: ['Next.js', 'Tailwind CSS', 'Glassmorphism'],
-                link: '#home',
-                isExternal: false,
-              },
+              // {
+              //   title: 'Personal Portfolio',
+              //   description: 'Modern glassmorphic portfolio showcasing my projects and skills.',
+              //   tech: ['Next.js', 'Tailwind CSS', 'Glassmorphism'],
+              //   link: '#home',
+              //   isExternal: false,
+              // },
             ].map((project, index) => (
               <div
                 key={index}
-                className="glass glass-hover rounded-2xl p-6 group"
+                className="glass glass-hover rounded-2xl p-6 group flex flex-col h-full"
               >
-                <div className="mb-6">
+                <div className="flex-grow">
                   <h3 className="text-xl font-bold text-white mb-3 drop-shadow-md">{project.title}</h3>
                   <p className="text-white leading-relaxed mb-4 drop-shadow-sm">
                     {project.description}
@@ -171,22 +183,84 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-                <a
-                  href={project.link}
-                  target={project.isExternal ? "_blank" : "_self"}
-                  rel={project.isExternal ? "noopener noreferrer" : ""}
-                  className="inline-flex items-center gap-2 text-white font-semibold hover:text-accent-300 transition-colors duration-300"
-                >
-                  {project.isExternal ? 'View Project' : 'View Live'}
-                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
+                {project.isECG ? (
+                  <button
+                    onClick={() => setShowECGModal(true)}
+                    className="inline-flex items-center gap-2 text-white font-semibold hover:text-accent-300 transition-colors duration-300"
+                  >
+                    View Project
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                ) : project.link ? (
+                  <a
+                    href={project.link}
+                    target={project.isExternal ? "_blank" : "_self"}
+                    rel={project.isExternal ? "noopener noreferrer" : ""}
+                    className="inline-flex items-center gap-2 text-white font-semibold hover:text-accent-300 transition-colors duration-300"
+                  >
+                    {project.isExternal ? 'View Project' : 'View Live'}
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                ) : null}
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ECG Project Modal */}
+      {showECGModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+          <div className="glass rounded-2xl p-8 max-w-md w-full mx-auto">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">Clinical ECG Classification</h3>
+              <p className="text-white/80">Choose what you'd like to explore:</p>
+            </div>
+            <div className="space-y-4">
+              <a
+                href="https://huggingface.co/zackyabd/clinical-ecg-classifier"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block glass-hover rounded-xl p-4 text-center transition-all duration-300 hover:scale-105"
+                onClick={() => setShowECGModal(false)}
+              >
+                <div className="text-white font-semibold mb-1">Model</div>
+                <div className="text-white/70 text-sm">View the trained model on Hugging Face</div>
+              </a>
+              <a
+                href="https://huggingface.co/datasets/zackyabd/ptb-xl-processed"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block glass-hover rounded-xl p-4 text-center transition-all duration-300 hover:scale-105"
+                onClick={() => setShowECGModal(false)}
+              >
+                <div className="text-white font-semibold mb-1">Dataset</div>
+                <div className="text-white/70 text-sm">Explore the PTB-XL processed dataset</div>
+              </a>
+              <a
+                href="https://github.com/abdul-zacky/ecg-classifier"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block glass-hover rounded-xl p-4 text-center transition-all duration-300 hover:scale-105"
+                onClick={() => setShowECGModal(false)}
+              >
+                <div className="text-white font-semibold mb-1">GitHub</div>
+                <div className="text-white/70 text-sm">View source code and documentation</div>
+              </a>
+            </div>
+            <button
+              onClick={() => setShowECGModal(false)}
+              className="mt-6 w-full glass-dark rounded-xl py-3 text-white font-semibold hover:bg-white/20 transition-colors duration-300"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Contact Section */}
       <section id="contact" className="py-24 px-6">
