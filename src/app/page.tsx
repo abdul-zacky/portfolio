@@ -41,27 +41,27 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden z-10">
-        <div className="relative z-10 text-center px-6">
-          <div className="p-12 max-w-4xl mx-auto hero-animation">
-            <h1 className="text-6xl md:text-8xl font-bold mb-2 text-white drop-shadow-2xl futuristic-font tracking-wider">
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <div className="p-6 sm:p-12 max-w-4xl mx-auto hero-animation">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-2 text-white drop-shadow-2xl futuristic-font tracking-wider">
               {t('hero.title')}
             </h1>
-            <p className="text-lg md:text-xl text-white/70 mb-6 font-light drop-shadow-lg">
+            <p className="text-base sm:text-lg md:text-xl text-white/70 mb-4 sm:mb-6 font-light drop-shadow-lg">
               {t('hero.name')}
             </p>
-            <p className="text-xl md:text-2xl text-white mb-8 leading-relaxed font-medium drop-shadow-xl tech-font">
+            <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 leading-relaxed font-medium drop-shadow-xl tech-font">
               {t('hero.subtitle')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <a
                 href="#projects"
-                className="glass-hover px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105"
+                className="glass-hover px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105"
               >
                 {t('hero.viewWork')}
               </a>
               <a
                 href="#contact"
-                className="glass-dark px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:bg-white/20 transform hover:scale-105"
+                className="glass-dark px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:bg-white/20 transform hover:scale-105"
               >
                 {t('hero.getInTouch')}
               </a>
@@ -71,15 +71,15 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative py-24 px-6 z-10">
+      <section id="about" className="relative py-16 sm:py-24 px-4 sm:px-6 z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg futuristic-font">{t('about.title')}</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg futuristic-font">{t('about.title')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-stretch">
-            <div className="glass rounded-2xl p-8 flex flex-col">
-              <h3 className="text-2xl font-bold text-white mb-6 drop-shadow-md">{t('about.journeyTitle')}</h3>
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-12 items-stretch">
+            <div className="glass rounded-2xl p-6 sm:p-8 flex flex-col">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 drop-shadow-md">{t('about.journeyTitle')}</h3>
               <p className="text-white leading-relaxed mb-6 drop-shadow-sm">
                 {t('about.journeyP1')}
               </p>
@@ -87,8 +87,8 @@ export default function Home() {
                 {t('about.journeyP2')}
               </p>
             </div>
-            <div className="glass rounded-2xl p-8 flex flex-col">
-              <h3 className="text-2xl font-bold text-white mb-6 drop-shadow-md">{t('about.skillsTitle')}</h3>
+            <div className="glass rounded-2xl p-6 sm:p-8 flex flex-col">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 drop-shadow-md">{t('about.skillsTitle')}</h3>
               <div className="grid grid-cols-2 gap-4">
                 {['Machine Learning', 'AI/Neural Networks', 'React/Next.js', 'TypeScript', 'Python', 'Tailwind CSS', 'Node.js'].map((skill, index) => (
                   <div key={index} className="glass-dark rounded-lg p-3 text-center">
@@ -102,13 +102,13 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative py-24 px-6 z-10">
+      <section id="projects" className="relative py-16 sm:py-24 px-4 sm:px-6 z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg futuristic-font">{t('projects.title')}</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg futuristic-font">{t('projects.title')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 title: t('projects.quikyu.title'),
@@ -205,8 +205,8 @@ export default function Home() {
 
       {/* ECG Project Modal */}
       {showECGModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-          <div className="glass rounded-2xl p-8 max-w-md w-full mx-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6">
+          <div className="glass rounded-2xl p-6 sm:p-8 max-w-md w-full mx-auto">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-white mb-2">{t('modal.ecg.title')}</h3>
               <p className="text-white/80">{t('modal.ecg.subtitle')}</p>
@@ -254,17 +254,17 @@ export default function Home() {
       )}
 
       {/* Contact Section */}
-      <section id="contact" className="relative py-24 px-6 z-10">
+      <section id="contact" className="relative py-16 sm:py-24 px-4 sm:px-6 z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg futuristic-font">{t('contact.title')}</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg futuristic-font">{t('contact.title')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
           </div>
-          <div className="glass rounded-2xl p-12 text-center">
-            <p className="text-xl text-white leading-relaxed mb-8 drop-shadow-sm">
+          <div className="glass rounded-2xl p-6 sm:p-12 text-center">
+            <p className="text-lg sm:text-xl text-white leading-relaxed mb-6 sm:mb-8 drop-shadow-sm">
               {t('contact.description')}
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
               <a
                 href="mailto:abdul.zacky@ui.ac.id"
                 className="glass-hover px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 inline-flex items-center justify-center gap-3"

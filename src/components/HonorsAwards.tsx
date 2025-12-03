@@ -107,32 +107,32 @@ export default function HonorsAwards() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="awards" className="py-24 px-6">
+    <section ref={sectionRef} id="awards" className="py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg futuristic-font">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg futuristic-font">
             {t('awards.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-1 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {awards.map((award, index) => (
             <div
               key={index}
-              className="award-card glass rounded-2xl p-8 glass-hover relative overflow-hidden"
+              className="award-card glass rounded-2xl p-6 sm:p-8 glass-hover relative overflow-hidden"
             >
               {/* Decorative gradient */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl" />
-              
+
               <div className="relative z-10">
-                <div className="flex items-start gap-6">
+                <div className="flex items-start gap-4 sm:gap-6">
                   {/* Trophy Icon */}
                   <div className="trophy-icon flex-shrink-0">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
-                      <svg 
-                        className="w-8 h-8 text-white" 
-                        fill="currentColor" 
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
+                      <svg
+                        className="w-6 h-6 sm:w-8 sm:h-8 text-white"
+                        fill="currentColor"
                         viewBox="0 0 20 20"
                       >
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
@@ -142,20 +142,20 @@ export default function HonorsAwards() {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
-                      <h3 className="text-2xl font-bold text-white drop-shadow-md flex-1">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-md flex-1 min-w-0 break-words">
                         {award.title}
                       </h3>
-                      <span className="glass-dark px-4 py-2 rounded-full text-sm text-white font-medium drop-shadow-sm whitespace-nowrap">
+                      <span className="glass-dark px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm text-white font-medium drop-shadow-sm whitespace-nowrap flex-shrink-0">
                         {award.date}
                       </span>
                     </div>
-                    
+
                     <p className="text-blue-300 font-semibold mb-2 drop-shadow-sm">
                       {t('awards.hacksphere.issuedBy')} {award.issuer}
                     </p>
-                    
+
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-6 h-6 rounded bg-yellow-400/20 flex items-center justify-center flex-shrink-0">
                         <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -166,7 +166,7 @@ export default function HonorsAwards() {
                         {t('awards.hacksphere.association')} {award.association}
                       </span>
                     </div>
-                    
+
                     <p className="text-white/90 leading-relaxed drop-shadow-sm">
                       {award.description}
                     </p>

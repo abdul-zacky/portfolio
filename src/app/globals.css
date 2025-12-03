@@ -6,12 +6,18 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   background: linear-gradient(to bottom, #0a0e27, #050b1f, #020510);
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -38,13 +44,24 @@ body {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  .glass-hover:hover {
-    background: rgba(0, 20, 55, 0.35);
-    border: 1px solid rgba(59, 130, 246, 0.6);
-    transform: translateY(-3px);
-    box-shadow: 0 16px 50px 0 rgba(0, 0, 0, 0.5),
-                0 0 80px 0 rgba(59, 130, 246, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  /* Only apply hover effects on devices that support hover */
+  @media (hover: hover) {
+    .glass-hover:hover {
+      background: rgba(0, 20, 55, 0.35);
+      border: 1px solid rgba(59, 130, 246, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 50px 0 rgba(0, 0, 0, 0.5),
+                  0 0 80px 0 rgba(59, 130, 246, 0.25),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+  }
+  
+  /* Touch devices - lighter effect */
+  @media (hover: none) {
+    .glass-hover:active {
+      background: rgba(0, 20, 55, 0.25);
+      border: 1px solid rgba(59, 130, 246, 0.5);
+    }
   }
   
   .gradient-text {
@@ -181,6 +198,29 @@ body {
   
   .tech-font {
     font-family: 'Exo 2', sans-serif;
+  }
+  
+  /* Mobile Menu Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Mobile Text Optimization */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px; /* Prevent zoom on mobile */
+    }
   }
 }
 

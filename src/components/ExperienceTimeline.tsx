@@ -195,10 +195,10 @@ export default function ExperienceTimeline() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="experience" className="py-24 px-6 relative">
+    <section ref={sectionRef} id="experience" className="py-16 sm:py-24 px-4 sm:px-6 relative">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-lg futuristic-font">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg futuristic-font">
             {t('experience.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
@@ -209,7 +209,7 @@ export default function ExperienceTimeline() {
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-400 via-cyan-400 to-blue-400 timeline-line" />
 
           {/* Experience cards */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experienceLayout.map((item, index) => {
               const { experience: exp, side } = item;
               const isLeft = side === 'left';
@@ -217,35 +217,35 @@ export default function ExperienceTimeline() {
               return (
                 <div key={index} className="relative">
                   <div
-                    className={`experience-card relative flex items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'
+                    className={`experience-card relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
                       }`}
                     data-side={side}
                   >
                     {/* Timeline dot */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-400 border-4 border-black/30 timeline-dot z-10" />
 
-                    {/* Content card */}
-                    <div className={`w-full md:w-5/12 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
-                      <div className="glass rounded-2xl p-6 glass-hover">
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <h3 className="text-xl font-bold text-white mb-1 drop-shadow-md">
+                    {/* Content card - Mobile: full width centered, Desktop: alternating sides */}
+                    <div className={`w-full md:w-5/12 ${isLeft ? 'md:pr-8 lg:pr-12' : 'md:pl-8 lg:pl-12'}`}>
+                      <div className="glass rounded-2xl p-5 sm:p-6 glass-hover ml-8 md:ml-0">
+                        <div className="flex items-start justify-between mb-3 sm:mb-4 flex-wrap gap-2">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg sm:text-xl font-bold text-white mb-1 drop-shadow-md">
                               {exp.title}
                             </h3>
-                            <p className="text-blue-300 font-semibold drop-shadow-sm">{exp.company}</p>
+                            <p className="text-blue-300 font-semibold drop-shadow-sm text-sm sm:text-base">{exp.company}</p>
                           </div>
-                          <span className="glass-dark px-3 py-1 rounded-full text-sm text-white font-medium drop-shadow-sm whitespace-nowrap">
+                          <span className="glass-dark px-3 py-1 rounded-full text-xs sm:text-sm text-white font-medium drop-shadow-sm whitespace-nowrap flex-shrink-0">
                             {exp.period}
                           </span>
                         </div>
-                        <p className="text-white/90 leading-relaxed mb-4 drop-shadow-sm">
+                        <p className="text-white/90 leading-relaxed mb-3 sm:mb-4 drop-shadow-sm text-sm sm:text-base">
                           {exp.description}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {exp.skills.map((skill, skillIndex) => (
                             <span
                               key={skillIndex}
-                              className="glass-dark px-3 py-1 rounded-full text-xs text-white/80 font-medium drop-shadow-sm"
+                              className="glass-dark px-2 sm:px-3 py-1 rounded-full text-xs text-white/80 font-medium drop-shadow-sm"
                             >
                               {skill}
                             </span>
@@ -254,7 +254,7 @@ export default function ExperienceTimeline() {
                       </div>
                     </div>
 
-                    {/* Spacer for alternating layout */}
+                    {/* Spacer for alternating layout - only on desktop */}
                     <div className="hidden md:block w-2/12" />
                   </div>
                 </div>
