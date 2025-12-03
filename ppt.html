@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINAR - Smart Contract Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            width: 100%;
+            max-width: 1400px;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0D47A1;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .contract-box {
+            background: linear-gradient(135deg, #0D47A1 0%, #1565C0 100%);
+            border-radius: 16px;
+            padding: 25px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contract-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .contract-box h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon {
+            width: 28px;
+            height: 28px;
+            background: #FFC107;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #0D47A1;
+            font-size: 16px;
+        }
+
+        .contract-address {
+            font-size: 10px;
+            font-family: 'Courier New', monospace;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            word-break: break-all;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features {
+            list-style: none;
+            position: relative;
+            z-index: 2;
+        }
+
+        .features li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFC107;
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .flow-section {
+            grid-column: 1 / -1;
+            margin-top: 15px;
+        }
+
+        .flow-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0D47A1;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 10px;
+        }
+
+        .flow-step {
+            background: linear-gradient(135deg, #FFC107 0%, #FF9800 100%);
+            border-radius: 12px;
+            padding: 15px 18px;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+            width: 160px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .flow-step .step-number {
+            background: white;
+            color: #FF9800;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 13px;
+            margin: 0 auto 8px;
+        }
+
+        .arrow {
+            color: #0D47A1;
+            font-size: 28px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        .royalty-box {
+            grid-column: 1 / -1;
+            background: #FFF9E6;
+            border-left: 4px solid #FFC107;
+            padding: 18px 22px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .royalty-box h4 {
+            color: #FF9800;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .royalty-methods {
+            display: flex;
+            gap: 18px;
+        }
+
+        .method {
+            flex: 1;
+            background: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #333;
+            border: 2px solid #FFC107;
+            line-height: 1.5;
+        }
+
+        .method strong {
+            color: #FF9800;
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 11px;
+            color: #999;
+        }
+
+        .header-right .main-text {
+            font-weight: 600;
+            color: #0D47A1;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="logo">SINAR</div>
+            <div class="header-right">
+                <div class="main-text">Technical Architecture</div>
+                <div>Infinity Hackathon 2025</div>
+            </div>
+        </div>
+
+        <h1 class="title">Smart Contract Architecture</h1>
+        <p class="subtitle">Dual-Contract System untuk Copyright Protection & Commercial Licensing</p>
+
+        <div class="content">
+            <!-- Copyright Contract -->
+            <div class="contract-box">
+                <h3>
+                    <span class="icon">©</span>
+                    Copyright Contract
+                </h3>
+                <div class="contract-address">0xb7879F251D3C078Fc87CdF27a0E5c551554ed905</div>
+                <ul class="features">
+                    <li><strong>Fungsi:</strong> Mint NFT sebagai bukti kepemilikan karya (immutable proof)</li>
+                    <li><strong>Metadata:</strong> Work hash (SHA-256), creator address, timestamp, IPFS/Supabase URL</li>
+                    <li><strong>Standard:</strong> ERC-721 (NFT non-fungible)</li>
+                    <li><strong>Keunggulan:</strong> Immutable, legally-binding, publicly verifiable</li>
+                </ul>
+            </div>
+
+            <!-- License Contract -->
+            <div class="contract-box">
+                <h3>
+                    <span class="icon">⚖</span>
+                    License Contract
+                </h3>
+                <div class="contract-address">0x07A124Db612B3E6bEF66bfC4c9859e524852305f</div>
+                <ul class="features">
+                    <li><strong>Fungsi:</strong> Mint NFT lisensi komersial dengan terms transparan</li>
+                    <li><strong>Data:</strong> Harga, durasi, royalty split config, usage rights</li>
+                    <li><strong>Linking:</strong> Connected ke Copyright NFT via <code>workId</code></li>
+                    <li><strong>Standard:</strong> ERC-721 + custom royalty distribution logic</li>
+                </ul>
+            </div>
+
+            <!-- Flow Diagram -->
+            <div class="flow-section">
+                <div class="flow-title">Interaksi Contract Flow</div>
+                <div class="flow-diagram">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        User Upload<br>→<br>Hash File<br>(SHA-256)
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        Mint Copyright<br>NFT<br>(Immutable Proof)
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        Configure<br>License<br>→<br>Mint Template
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        Purchase &<br>Transfer<br>+<br>Royalty Split
+                    </div>
+                </div>
+            </div>
+
+            <!-- Royalty Distribution -->
+            <div class="royalty-box">
+                <h4>🔄 Royalty Distribution Methods</h4>
+                <div class="royalty-methods">
+                    <div class="method">
+                        <strong>Method 1: Custom Logic</strong>
+                        Smart contract function dengan loop iteration untuk split payment ke multiple recipients sesuai percentage yang dikonfigurasi (e.g., 40% composer, 30% lyricist, 20% producer)
+                    </div>
+                    <div class="method">
+                        <strong>Method 2: EIP-2981</strong>
+                        Integrasi dengan NFT Royalty Standard untuk future compatibility dengan marketplace eksternal seperti OpenSea & Rarible
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

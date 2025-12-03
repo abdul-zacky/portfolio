@@ -1,6 +1,7 @@
 // app/layout.tsx
 import './globals.css';
 import Navbar from '@/components/Navbar';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 
 export const metadata = {
   title: "Zac's Portfolio - Creative Developer",
@@ -11,8 +12,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main>{children}</main>
+        <LanguageProvider>
+          <Navbar />
+          <main>{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );
