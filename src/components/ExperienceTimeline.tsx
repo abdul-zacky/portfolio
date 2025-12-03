@@ -78,7 +78,7 @@ export default function ExperienceTimeline() {
     const companySides = new Map<string, 'left' | 'right'>();
     let currentSide: 'left' | 'right' = 'left';
 
-    experiences.forEach((exp, index) => {
+    experiences.forEach((exp) => {
       if (companySides.has(exp.company)) {
         // Same company - keep on same side
         layout.push({
@@ -213,13 +213,12 @@ export default function ExperienceTimeline() {
             {experienceLayout.map((item, index) => {
               const { experience: exp, side } = item;
               const isLeft = side === 'left';
-              
+
               return (
                 <div key={index} className="relative">
                   <div
-                    className={`experience-card relative flex items-center ${
-                      isLeft ? 'flex-row' : 'flex-row-reverse'
-                    }`}
+                    className={`experience-card relative flex items-center ${isLeft ? 'flex-row' : 'flex-row-reverse'
+                      }`}
                     data-side={side}
                   >
                     {/* Timeline dot */}
