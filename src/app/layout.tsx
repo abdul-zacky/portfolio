@@ -2,6 +2,7 @@
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
   title: "Zac's Portfolio - Creative Developer",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main>{children}</main>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
