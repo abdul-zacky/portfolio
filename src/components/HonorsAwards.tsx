@@ -191,7 +191,7 @@ export default function HonorsAwards() {
                   </div>
 
                   <p className="text-blue-300 font-semibold mb-4 drop-shadow-sm">
-                    Issued by {award.issuer}
+                    {t('awards.issuedBy')} {award.issuer}
                   </p>
 
 
@@ -204,7 +204,7 @@ export default function HonorsAwards() {
                       onClick={() => toggleExpanded(index)}
                       className="text-blue-300 hover:text-blue-200 text-sm font-medium mt-2 transition-colors duration-200"
                     >
-                      {expandedAwards.has(index) ? 'Show less' : 'Show more...'}
+                      {expandedAwards.has(index) ? t('awards.showLess') : t('awards.showMore')}
                     </button>
                   </div>
 

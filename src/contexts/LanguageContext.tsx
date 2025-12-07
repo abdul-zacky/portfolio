@@ -117,6 +117,9 @@ const translations: Record<Language, Record<string, string>> = {
     'awards.papua.association': 'Associated with',
     'awards.papua.associationName': 'University of Indonesia',
     'awards.papua.desc': 'Won 1st place in Digital Innovation Challenge with Petatas, an innovative Generative AI-based solution to bridge the financial literacy gap in Papua. Addressed centralization of QRIS transactions by gamifying the learning process and designing an educational ecosystem to increase QRIS usage outside of Sorong City.',
+    'awards.issuedBy': 'Issued by',
+    'awards.showMore': 'Show more...',
+    'awards.showLess': 'Show less',
 
     // Contact Section
     'contact.title': 'Let\'s Connect',
@@ -238,6 +241,9 @@ const translations: Record<Language, Record<string, string>> = {
     'awards.papua.association': 'Associé à',
     'awards.papua.associationName': 'Universitas Indonesia',
     'awards.papua.desc': 'Remporté la 1ère place au Digital Innovation Challenge avec Petatas, une solution innovante basée sur l\'IA générative pour combler l\'écart de littératie financière en Papouasie. A abordé la centralisation des transactions QRIS en gamifiant le processus d\'apprentissage et en concevant un écosystème éducatif pour augmenter l\'utilisation de QRIS en dehors de Sorong City.',
+    'awards.issuedBy': 'Délivré par',
+    'awards.showMore': 'Voir plus...',
+    'awards.showLess': 'Voir moins',
 
     // Contact Section
     'contact.title': 'Restons en contact',
@@ -359,6 +365,9 @@ const translations: Record<Language, Record<string, string>> = {
     'awards.papua.association': 'Asociado con',
     'awards.papua.associationName': 'Universitas Indonesia',
     'awards.papua.desc': 'Ganó el 1er lugar en Digital Innovation Challenge con Petatas, una solución innovadora basada en IA generativa para cerrar la brecha de alfabetización financiera en Papua. Abordó la centralización de transacciones QRIS mediante la gamificación del proceso de aprendizaje y diseñando un ecosistema educativo para aumentar el uso de QRIS fuera de Sorong City.',
+    'awards.issuedBy': 'Emitido por',
+    'awards.showMore': 'Ver más...',
+    'awards.showLess': 'Ver menos',
 
     // Contact Section
     'contact.title': 'Conectémonos',
