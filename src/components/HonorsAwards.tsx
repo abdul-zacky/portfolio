@@ -111,6 +111,19 @@ function ImageCarousel({ images, alt }: ImageCarouselProps) {
 export default function HonorsAwards() {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
+  const [expandedAwards, setExpandedAwards] = useState<Set<number>>(new Set());
+
+  const toggleExpanded = (index: number) => {
+    setExpandedAwards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
 
   const awards: Award[] = [
     {
@@ -280,9 +293,19 @@ export default function HonorsAwards() {
                       </span>
                     </div>
 
-                    <p className="text-white/90 leading-relaxed drop-shadow-sm mb-4">
-                      {award.description}
-                    </p>
+
+                    {/* Description with Show More */}
+                    <div className="mb-4">
+                      <p className={`text-white/90 leading-relaxed drop-shadow-sm ${!expandedAwards.has(index) ? 'line-clamp-3' : ''}`}>
+                        {award.description}
+                      </p>
+                      <button
+                        onClick={() => toggleExpanded(index)}
+                        className="text-blue-300 hover:text-blue-200 text-sm font-medium mt-2 transition-colors duration-200"
+                      >
+                        {expandedAwards.has(index) ? 'Show less' : 'Show more...'}
+                      </button>
+                    </div>
 
                     {/* Image Gallery */}
                     {award.images && award.images.length > 0 && (
