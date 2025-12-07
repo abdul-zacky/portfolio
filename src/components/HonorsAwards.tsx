@@ -1,12 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface Award {
   title: string;
@@ -109,7 +105,6 @@ function ImageCarousel({ images, alt }: ImageCarouselProps) {
 }
 
 export default function HonorsAwards() {
-  const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
   const [expandedAwards, setExpandedAwards] = useState<Set<number>>(new Set());
 
@@ -164,39 +159,8 @@ export default function HonorsAwards() {
     }
   ].sort((a, b) => a.rank - b.rank);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Animate award cards
-      gsap.utils.toArray<HTMLElement>('.award-card').forEach((card) => {
-        gsap.fromTo(
-          card,
-          {
-            opacity: 0,
-            y: 50,
-            scale: 0.95
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 80%',
-              end: 'top 50%',
-              toggleActions: 'play none none reverse'
-            }
-          }
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="awards" className="py-16 sm:py-24 px-4 sm:px-6">
+    <section id="awards" className="py-16 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white drop-shadow-lg futuristic-font">
