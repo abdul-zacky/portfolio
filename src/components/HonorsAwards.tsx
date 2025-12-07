@@ -189,43 +189,6 @@ export default function HonorsAwards() {
             }
           }
         );
-
-        // Trophy icon animation
-        const trophy = card.querySelector('.trophy-icon');
-        if (trophy) {
-          gsap.fromTo(
-            trophy,
-            {
-              scale: 0,
-              rotation: -180
-            },
-            {
-              scale: 1,
-              rotation: 0,
-              duration: 0.8,
-              ease: 'back.out(1.7)',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 75%',
-                toggleActions: 'play none none reverse'
-              }
-            }
-          );
-
-          // Continuous subtle rotation
-          gsap.to(trophy, {
-            rotation: 5,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: 'sine.inOut',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 75%',
-              toggleActions: 'play pause resume pause'
-            }
-          });
-        }
       });
     }, sectionRef);
 
@@ -252,68 +215,41 @@ export default function HonorsAwards() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl" />
 
               <div className="relative z-10">
-                <div className="flex flex-col lg:flex-row items-start gap-4 sm:gap-6">
-                  {/* Trophy Icon */}
-                  <div className="trophy-icon flex-shrink-0">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
-                      <svg
-                        className="w-6 h-6 sm:w-8 sm:h-8 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                        <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                {/* Content */}
+                <div className="flex-1 min-w-0 w-full">
+                  <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-md flex-1 min-w-0 break-words">
+                      {award.title}
+                    </h3>
+                    <span className="glass-dark px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm text-white font-medium drop-shadow-sm whitespace-nowrap flex-shrink-0">
+                      {award.date}
+                    </span>
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 min-w-0 w-full">
-                    <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-md flex-1 min-w-0 break-words">
-                        {award.title}
-                      </h3>
-                      <span className="glass-dark px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm text-white font-medium drop-shadow-sm whitespace-nowrap flex-shrink-0">
-                        {award.date}
-                      </span>
-                    </div>
+                  <p className="text-blue-300 font-semibold mb-4 drop-shadow-sm">
+                    Issued by {award.issuer}
+                  </p>
 
-                    <p className="text-blue-300 font-semibold mb-2 drop-shadow-sm">
-                      {t('awards.hacksphere.issuedBy')} {award.issuer}
+
+                  {/* Description with Show More */}
+                  <div className="mb-4">
+                    <p className={`text-white/90 leading-relaxed drop-shadow-sm ${!expandedAwards.has(index) ? 'line-clamp-3' : ''}`}>
+                      {award.description}
                     </p>
-
-                    <div className="flex items-center gap-2 mb-4">
-                      <div className="w-6 h-6 rounded bg-yellow-400/20 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <span className="text-white/80 text-sm drop-shadow-sm">
-                        {t('awards.hacksphere.association')} {award.association}
-                      </span>
-                    </div>
-
-
-                    {/* Description with Show More */}
-                    <div className="mb-4">
-                      <p className={`text-white/90 leading-relaxed drop-shadow-sm ${!expandedAwards.has(index) ? 'line-clamp-3' : ''}`}>
-                        {award.description}
-                      </p>
-                      <button
-                        onClick={() => toggleExpanded(index)}
-                        className="text-blue-300 hover:text-blue-200 text-sm font-medium mt-2 transition-colors duration-200"
-                      >
-                        {expandedAwards.has(index) ? 'Show less' : 'Show more...'}
-                      </button>
-                    </div>
-
-                    {/* Image Gallery */}
-                    {award.images && award.images.length > 0 && (
-                      <div className="mt-4">
-                        <ImageCarousel images={award.images} alt={award.title} />
-                      </div>
-                    )}
+                    <button
+                      onClick={() => toggleExpanded(index)}
+                      className="text-blue-300 hover:text-blue-200 text-sm font-medium mt-2 transition-colors duration-200"
+                    >
+                      {expandedAwards.has(index) ? 'Show less' : 'Show more...'}
+                    </button>
                   </div>
+
+                  {/* Image Gallery */}
+                  {award.images && award.images.length > 0 && (
+                    <div className="mt-4">
+                      <ImageCarousel images={award.images} alt={award.title} />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
