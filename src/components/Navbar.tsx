@@ -83,12 +83,12 @@ const Navbar = () => {
                   <path d="M3 16H21V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V16Z" fill="currentColor" opacity="0.7" />
                   {/* Yellow stripe - now lighter gray */}
                   <path d="M3 8H21V16H3V8Z" fill="currentColor" opacity="0.3" />
-                  {/* Simplified coat of arms */}
-                  <ellipse cx="12" cy="12" rx="3" ry="3.5" fill="currentColor" opacity="0.5" />
-                  <rect x="10.5" y="10" width="3" height="4" rx="0.5" fill="currentColor" opacity="0.6" />
-                  <circle cx="11.2" cy="11.5" r="0.4" fill="currentColor" opacity="0.3" />
-                  <circle cx="12.8" cy="11.5" r="0.4" fill="currentColor" opacity="0.3" />
-                  <rect x="11" y="13" width="2" height="0.8" fill="currentColor" opacity="0.3" />
+                  {/* Simplified coat of arms - moved left */}
+                  <ellipse cx="10" cy="12" rx="3" ry="3.5" fill="currentColor" opacity="0.5" />
+                  <rect x="8.5" y="10" width="3" height="4" rx="0.5" fill="currentColor" opacity="0.6" />
+                  <circle cx="9.2" cy="11.5" r="0.4" fill="currentColor" opacity="0.3" />
+                  <circle cx="10.8" cy="11.5" r="0.4" fill="currentColor" opacity="0.3" />
+                  <rect x="9" y="13" width="2" height="0.8" fill="currentColor" opacity="0.3" />
                 </svg>
               </button>
             </div>
@@ -137,12 +137,12 @@ const Navbar = () => {
                   <path d="M3 16H21V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V16Z" fill="currentColor" opacity="0.7" />
                   {/* Yellow stripe - now lighter gray */}
                   <path d="M3 8H21V16H3V8Z" fill="currentColor" opacity="0.3" />
-                  {/* Simplified coat of arms */}
-                  <ellipse cx="12" cy="12" rx="2.5" ry="3" fill="currentColor" opacity="0.5" />
-                  <rect x="11" y="10.5" width="2" height="3" rx="0.3" fill="currentColor" opacity="0.6" />
-                  <circle cx="11.6" cy="11.5" r="0.3" fill="currentColor" opacity="0.3" />
-                  <circle cx="12.4" cy="11.5" r="0.3" fill="currentColor" opacity="0.3" />
-                  <rect x="11.3" y="12.8" width="1.4" height="0.5" fill="currentColor" opacity="0.3" />
+                  {/* Simplified coat of arms - moved left */}
+                  <ellipse cx="10" cy="12" rx="2.5" ry="3" fill="currentColor" opacity="0.5" />
+                  <rect x="9" y="10.5" width="2" height="3" rx="0.3" fill="currentColor" opacity="0.6" />
+                  <circle cx="9.6" cy="11.5" r="0.3" fill="currentColor" opacity="0.3" />
+                  <circle cx="10.4" cy="11.5" r="0.3" fill="currentColor" opacity="0.3" />
+                  <rect x="9.3" y="12.8" width="1.4" height="0.5" fill="currentColor" opacity="0.3" />
                 </svg>
               </button>
             </div>
