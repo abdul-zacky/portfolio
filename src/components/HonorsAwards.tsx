@@ -1,24 +1,126 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Image from 'next/image';
 
 gsap.registerPlugin(ScrollTrigger);
+
+interface Award {
+  title: string;
+  issuer: string;
+  date: string;
+  association: string;
+  description: string;
+  rank: number;
+  images?: string[];
+}
+
+interface ImageCarouselProps {
+  images: string[];
+  alt: string;
+}
+
+function ImageCarousel({ images, alt }: ImageCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  if (images.length === 0) return null;
+
+  if (images.length === 1) {
+    return (
+      <div className="relative w-full aspect-square rounded-xl overflow-hidden">
+        <Image
+          src={images[0]}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          unoptimized
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-full aspect-square rounded-xl overflow-hidden group">
+      {/* Image Display */}
+      <div className="relative w-full h-full">
+        <Image
+          src={images[currentIndex]}
+          alt={`${alt} - Image ${currentIndex + 1}`}
+          fill
+          className="object-cover transition-opacity duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          unoptimized
+        />
+      </div>
+
+      {/* Navigation Buttons */}
+      <button
+        onClick={prevImage}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        aria-label="Previous image"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        onClick={nextImage}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        aria-label="Next image"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Indicators */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentIndex
+              ? 'bg-white w-8'
+              : 'bg-white/50 hover:bg-white/75'
+              }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Image Counter */}
+      <div className="absolute top-3 right-3 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+        {currentIndex + 1} / {images.length}
+      </div>
+    </div>
+  );
+}
 
 export default function HonorsAwards() {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
 
-  const awards = [
+  const awards: Award[] = [
     {
       title: t('awards.quikyu.title'),
       issuer: t('awards.quikyu.issuer'),
       date: 'Oct 2025',
       association: t('awards.quikyu.associationName'),
       description: t('awards.quikyu.desc'),
-      rank: 1
+      rank: 1,
+      images: ['/awards/quikyu-1.jpeg', '/awards/quikyu-2.gif']
     },
     {
       title: t('awards.sivana.title'),
@@ -26,7 +128,8 @@ export default function HonorsAwards() {
       date: 'Nov 2025',
       association: t('awards.sivana.associationName'),
       description: t('awards.sivana.desc'),
-      rank: 2
+      rank: 2,
+      images: ['/awards/sivana-1.jpg', '/awards/sivana-2.jpg']
     },
     {
       title: t('awards.nexsolve.title'),
@@ -34,7 +137,17 @@ export default function HonorsAwards() {
       date: 'Nov 2025',
       association: t('awards.nexsolve.associationName'),
       description: t('awards.nexsolve.desc'),
-      rank: 3
+      rank: 3,
+      images: ['/awards/nexsolve.jpg']
+    },
+    {
+      title: t('awards.papua.title'),
+      issuer: t('awards.papua.issuer'),
+      date: 'Nov 2025',
+      association: t('awards.papua.associationName'),
+      description: t('awards.papua.desc'),
+      rank: 4,
+      images: ['/awards/papua-1.jpeg', '/awards/papua-2.jpeg']
     }
   ].sort((a, b) => a.rank - b.rank);
 
@@ -116,7 +229,7 @@ export default function HonorsAwards() {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-1 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto">
           {awards.map((award, index) => (
             <div
               key={index}
@@ -126,7 +239,7 @@ export default function HonorsAwards() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl" />
 
               <div className="relative z-10">
-                <div className="flex items-start gap-4 sm:gap-6">
+                <div className="flex flex-col lg:flex-row items-start gap-4 sm:gap-6">
                   {/* Trophy Icon */}
                   <div className="trophy-icon flex-shrink-0">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg">
@@ -142,7 +255,7 @@ export default function HonorsAwards() {
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 w-full">
                     <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
                       <h3 className="text-xl sm:text-2xl font-bold text-white drop-shadow-md flex-1 min-w-0 break-words">
                         {award.title}
@@ -167,9 +280,16 @@ export default function HonorsAwards() {
                       </span>
                     </div>
 
-                    <p className="text-white/90 leading-relaxed drop-shadow-sm">
+                    <p className="text-white/90 leading-relaxed drop-shadow-sm mb-4">
                       {award.description}
                     </p>
+
+                    {/* Image Gallery */}
+                    {award.images && award.images.length > 0 && (
+                      <div className="mt-4">
+                        <ImageCarousel images={award.images} alt={award.title} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -125,6 +125,13 @@ export default function Home() {
                 isExternal: true,
               },
               {
+                title: t('projects.petatas.title'),
+                description: t('projects.petatas.desc'),
+                tech: ['Generative AI', 'Gamification', 'EdTech'],
+                link: 'https://petatas.vercel.app',
+                isExternal: true,
+              },
+              {
                 title: t('projects.ecg.title'),
                 description: t('projects.ecg.desc'),
                 tech: ['PyTorch', 'Deep Learning', 'Medical AI'],
@@ -135,8 +142,15 @@ export default function Home() {
               {
                 title: t('projects.dataclair.title'),
                 description: t('projects.dataclair.desc'),
-                tech: ['Machine Learning', 'Data Science', 'Next.js'],
+                tech: ['Random Forest', 'XGBoost', 'AutoML'],
                 link: 'https://dataclair.vercel.app',
+                isExternal: true,
+              },
+              {
+                title: t('projects.sinavika.title'),
+                description: t('projects.sinavika.desc'),
+                tech: ['AI', 'Healthcare', 'INA-CBG'],
+                link: 'https://sinavika.vercel.app',
                 isExternal: true,
               },
               {
