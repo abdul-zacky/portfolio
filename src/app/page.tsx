@@ -21,8 +21,42 @@ export default function Home() {
     }
   }, []);
 
+  // Structured Data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abdul Zacky",
+    "url": "https://www.abdulzacky.dev",
+    "jobTitle": "AI/ML Engineer & Full-Stack Developer",
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "University of Indonesia"
+    },
+    "description": "Award-winning AI/ML engineer specializing in machine learning, deep learning, and full-stack web development",
+    "sameAs": [
+      "https://github.com/abdul-zacky",
+      "https://linkedin.com/in/abdul-zacky"
+    ],
+    "knowsAbout": [
+      "Machine Learning",
+      "Deep Learning",
+      "Artificial Intelligence",
+      "Python",
+      "Next.js",
+      "Full-Stack Development",
+      "Computer Vision",
+      "Natural Language Processing"
+    ]
+  };
+
   return (
     <div className="min-h-screen relative">
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* FloatingLines Background - Fixed for entire page */}
       <div className="fixed inset-0 z-0" style={{ width: '100%', height: '100%' }}>
         <FloatingLines
