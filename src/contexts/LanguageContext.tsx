@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Language = 'en' | 'fr' | 'es';
+type Language = 'en' | 'fr' | 'es' | 'id';
 
 interface LanguageContextType {
   language: Language;
@@ -379,6 +379,125 @@ const translations: Record<Language, Record<string, string>> = {
     // Footer
     'footer.rights': 'Todos los derechos reservados.',
     'footer.designed': 'Diseñado & Construido por Abdul Zacky',
+  },
+  id: {
+    // Navbar
+    'nav.home': 'Beranda',
+    'nav.about': 'Tentang',
+    'nav.projects': 'Proyek',
+    'nav.experience': 'Pengalaman',
+    'nav.awards': 'Penghargaan',
+    'nav.contact': 'Kontak',
+
+    // Hero Section
+    'hero.title': 'zac',
+    'hero.name': 'Abdul Zacky',
+    'hero.subtitle': 'AI Engineer & Developer membangun solusi digital yang cerdas',
+    'hero.description': 'Spesialisasi dalam machine learning, neural networks, dan teknologi web modern untuk menciptakan aplikasi berbasis AI yang menyelesaikan masalah dunia nyata',
+    'hero.viewWork': 'Lihat Karya Saya',
+    'hero.getInTouch': 'Hubungi Saya',
+
+    // About Section
+    'about.title': 'Tentang Saya',
+    'about.journeyTitle': 'Perjalanan Saya',
+    'about.journeyP1': 'Halo, saya Zac, seorang AI engineer dan developer yang passionate dalam membangun sistem cerdas yang menyelesaikan masalah dunia nyata. Saya spesialis dalam deep learning, neural networks, dan menciptakan aplikasi AI dengan presisi dan reliabilitas tingkat klinis.',
+    'about.journeyP2': 'Dengan keahlian di PyTorch, Python, dan teknologi web modern, saya menjembatani kesenjangan antara riset AI terdepan dan solusi engineering praktis, menghadirkan sistem cerdas yang benar-benar memberikan dampak di bidang kesehatan dan lainnya.',
+    'about.skillsTitle': 'Keahlian & Teknologi',
+
+    // Projects Section
+    'projects.title': 'Proyek Unggulan',
+    'projects.quikyu.title': 'Quikyu - Sistem Antrian Cerdas Berbasis AI',
+    'projects.quikyu.desc': 'Juara 1 Hacksphere Compsphere 2025. Sistem antrian cerdas berbasis AI untuk KAI Access dengan prediksi permintaan AI, ruang tunggu virtual, dual trust scoring untuk pencegahan bot, dan rekomendasi rute cerdas.',
+    'projects.sivana.title': 'SIVANA - Rekrutmen ASN Berbasis AI',
+    'projects.sivana.desc': 'Juara ASN Digital AI Hackathon 2025. Sistem AI merevolusi rekrutmen pegawai negeri Indonesia dengan Computer Vision, NLP, dan Generative AI untuk verifikasi dokumen otomatis, verifikasi wajah anti kecurangan, dan generasi feedback cerdas.',
+    'projects.ecg.title': 'Klasifikasi ECG Klinis',
+    'projects.ecg.desc': 'Sistem deep learning multi-cabang untuk interpretasi ECG otomatis yang mendeteksi 71 kondisi jantung dengan visualisasi tingkat klinis.',
+    'projects.dataclair.title': 'DataClair - Platform Machine Learning Otomatis',
+    'projects.dataclair.desc': 'Aplikasi web full-stack yang menghasilkan prediksi ML dari data CSV tanpa memerlukan coding. Implementasi preprocessing otomatis, feature engineering, dan pemilihan model cerdas dengan prediksi real-time.',
+    'projects.petatas.title': 'Petatas - Platform AI Literasi Keuangan',
+    'projects.petatas.desc': 'Juara 1 Digital Innovation Challenge Bank Indonesia. Solusi berbasis Generative AI untuk menjembatani kesenjangan literasi keuangan di Papua, gamifikasi pembelajaran QRIS untuk meningkatkan penggunaan di luar Kota Sorong.',
+    'projects.sinavika.title': 'Sinavika - Peningkatan BPJS Kesehatan',
+    'projects.sinavika.desc': 'Sistem BPJS Kesehatan yang ditingkatkan menggunakan analisis e-klaim AI dengan integrasi INA-CBG, analisis IGD, dan AI kesehatan personal dengan integrasi end-to-end menghubungkan sistem rumah sakit, pasien, dan BPJS.',
+    'projects.neural.title': 'Neural Style Transfer',
+    'projects.neural.desc': 'Proyek AI open-source untuk transfer gaya artistik menggunakan neural networks.',
+    'projects.viewProject': 'Lihat Proyek',
+    'projects.viewLive': 'Lihat Live',
+
+    // ECG Modal
+    'modal.ecg.title': 'Klasifikasi ECG Klinis',
+    'modal.ecg.subtitle': 'Pilih apa yang ingin Anda eksplorasi:',
+    'modal.ecg.model': 'Model',
+    'modal.ecg.modelDesc': 'Lihat model terlatih di Hugging Face',
+    'modal.ecg.dataset': 'Dataset',
+    'modal.ecg.datasetDesc': 'Jelajahi dataset PTB-XL yang telah diproses',
+    'modal.ecg.github': 'GitHub',
+    'modal.ecg.githubDesc': 'Lihat source code dan dokumentasi',
+    'modal.ecg.close': 'Tutup',
+
+    // Experience Section
+    'experience.title': 'Pengalaman',
+    'experience.telkom.title': 'IT Developer & Data Analyst Intern',
+    'experience.telkom.company': 'Telkom Indonesia',
+    'experience.telkom.desc': 'Magang full-time mengembangkan solusi IT dan melakukan analisis data untuk perusahaan telekomunikasi terkemuka Indonesia. Bekerja on-site di Jakarta untuk memberikan insight berbasis data dan implementasi teknis.',
+    'experience.compfest1.title': 'Komite Ilmiah Data Analytics dan Dash',
+    'experience.compfest1.company': 'COMPFEST',
+    'experience.compfest1.desc': 'Posisi remote berkontribusi untuk komite ilmiah yang fokus pada analisis data dan pengembangan dashboard untuk salah satu event IT mahasiswa terbesar di Indonesia.',
+    'experience.compfest2.title': 'Staf Pengembangan Bisnis',
+    'experience.compfest2.company': 'COMPFEST',
+    'experience.compfest2.desc': 'Peran part-time on-site mendorong inisiatif pengembangan bisnis dan kemitraan untuk COMPFEST, festival teknologi premier Indonesia yang diselenggarakan oleh mahasiswa.',
+    'experience.ta1.title': 'Asisten Dosen Basis Data',
+    'experience.ta1.company': 'Fakultas Ilmu Komputer, Universitas Indonesia',
+    'experience.ta1.desc': 'Asisten Dosen untuk mata kuliah Basis Data, membantu mahasiswa menguasai SQL dan konsep basis data di Fakultas Ilmu Komputer, Universitas Indonesia.',
+    'experience.ta2.title': 'Asisten Dosen Aljabar Linear',
+    'experience.ta2.company': 'Fakultas Ilmu Komputer, Universitas Indonesia',
+    'experience.ta2.desc': 'Asisten Dosen untuk mata kuliah Aljabar Linear, membimbing mahasiswa melalui konsep matematika fundamental yang penting untuk ilmu komputer.',
+    'experience.ta3.title': 'Asisten Dosen Kalkulus',
+    'experience.ta3.company': 'Fakultas Ilmu Komputer, Universitas Indonesia',
+    'experience.ta3.desc': 'Asisten Dosen untuk mata kuliah Kalkulus, membantu mahasiswa memahami dasar-dasar kalkulus dan aplikasinya dalam ilmu komputer.',
+    'experience.prk.title': 'Staf Festival',
+    'experience.prk.company': 'Pesta Rakyat Komputer',
+    'experience.prk.desc': 'Anggota staf part-time on-site untuk festival Pesta Rakyat Komputer di Indonesia, berkontribusi dalam organisasi dan pelaksanaan acara.',
+
+    // Awards Section
+    'awards.title': 'Penghargaan',
+    'awards.quikyu.title': 'Juara 1 - Hacksphere, President University Compsphere 2025',
+    'awards.quikyu.issuer': 'KAI & President University',
+    'awards.quikyu.issuedBy': 'Diterbitkan oleh',
+    'awards.quikyu.association': 'Berasosiasi dengan',
+    'awards.quikyu.associationName': 'Universitas Indonesia',
+    'awards.quikyu.desc': 'Memenangkan tempat pertama di Hacksphere Compsphere 2025 dengan Quikyu, sistem antrian cerdas berbasis AI untuk ticketing KAI Access. Fitur prediksi permintaan AI dengan XGBoost & GradientBoost, ruang tunggu virtual, dual trust scoring (pra-akses + analisis perilaku), dan mesin rekomendasi cerdas. Dampak proyeksi: 99% uptime server, 94% pencegahan bot, 78% kepuasan pengguna, potensi pendapatan tambahan Rp 1,8T, dan pengurangan beban server 30% saat musim puncak.',
+    'awards.sivana.title': 'Juara 1 - ASN Digital AI Hackathon 2025',
+    'awards.sivana.issuer': 'Badan Kepegawaian Negara (BKN)',
+    'awards.sivana.issuedBy': 'Diterbitkan oleh',
+    'awards.sivana.association': 'Berasosiasi dengan',
+    'awards.sivana.associationName': 'Universitas Indonesia',
+    'awards.sivana.desc': 'Memenangkan tempat pertama (Rp 13.000.000) di ASN Digital AI Hackathon 2025 dengan SIVANA, sistem berbasis AI yang merevolusi proses rekrutmen pegawai negeri Indonesia. Dibangun dengan Computer Vision dan Generative AI untuk mengotomasi verifikasi dokumen (OCR + NLP), mengimplementasikan verifikasi wajah anti kecurangan dengan liveness detection, dan auto-generate feedback TMS. Dampak proyeksi: 99% akurasi (dari 80%), verifikasi <1 menit (dari 2-3 minggu), 90% pengurangan kasus penyamar, dan penghematan tahunan Rp 192,5B.',
+    'awards.nexsolve.title': 'Juara 2 - Kompetisi Paper Riset NexSolve (TECHTONIC UI 2025)',
+    'awards.nexsolve.issuer': 'IEEE SB UI (IEEE Student Branch Universitas Indonesia)',
+    'awards.nexsolve.issuedBy': 'Diterbitkan oleh',
+    'awards.nexsolve.association': 'Berasosiasi dengan',
+    'awards.nexsolve.associationName': 'Universitas Indonesia',
+    'awards.nexsolve.desc': 'Meraih Juara 2 di NexSolve, kompetisi paper riset internasional yang diadakan sebagai bagian dari acara TECHTONIC UI 2025. Paper kami, "AI-Powered Passenger Distribution: A Framework for Optimizing Crowd Flow on Metro Platforms," memperkenalkan framework berbasis AI (AIPDS) untuk mengoptimalkan distribusi penumpang di platform metro. Sistem menggunakan sensor real-time dan panduan dinamis untuk mengurangi kepadatan, mengurangi waktu tunggu kereta, dan meningkatkan keamanan serta kenyamanan penumpang.',
+    'awards.papua.title': 'Juara 1 - Digital Innovation Challenge Bank Indonesia Papua Barat',
+    'awards.papua.issuer': 'Bank Indonesia Papua Barat',
+    'awards.papua.issuedBy': 'Diterbitkan oleh',
+    'awards.papua.association': 'Berasosiasi dengan',
+    'awards.papua.associationName': 'Universitas Indonesia',
+    'awards.papua.desc': 'Memenangkan tempat pertama di Digital Innovation Challenge dengan Petatas, solusi inovatif berbasis Generative AI untuk menjembatani kesenjangan literasi keuangan di Papua. Mengatasi sentralisasi transaksi QRIS dengan gamifikasi proses pembelajaran dan merancang ekosistem edukasi untuk meningkatkan penggunaan QRIS di luar Kota Sorong.',
+    'awards.issuedBy': 'Diterbitkan oleh',
+    'awards.showMore': 'Lihat selengkapnya...',
+    'awards.showLess': 'Lihat lebih sedikit',
+
+    // Contact Section
+    'contact.title': 'Mari Terhubung',
+    'contact.description': 'Tertarik untuk berkolaborasi atau punya proyek yang ingin dibahas? Saya ingin mendengar dari Anda! Mari ciptakan sesuatu yang luar biasa bersama.',
+    'contact.email': 'Email Saya',
+    'contact.linkedin': 'LinkedIn',
+    'contact.github': 'GitHub',
+
+    // Footer
+    'footer.rights': 'Hak cipta dilindungi.',
+    'footer.designed': 'Dirancang & Dibangun oleh Abdul Zacky',
   }
 };
 

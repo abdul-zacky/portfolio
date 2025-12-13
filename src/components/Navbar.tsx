@@ -91,6 +91,20 @@ const Navbar = () => {
                   <rect x="9" y="13" width="2" height="0.8" fill="currentColor" opacity="0.3" />
                 </svg>
               </button>
+
+              <button
+                onClick={() => setLanguage('id')}
+                className={`p-1.5 rounded-full transition-all duration-300 ${language === 'id' ? 'bg-white/20 scale-110' : 'hover:bg-white/10'
+                  }`}
+                aria-label="Switch to Indonesian"
+              >
+                <svg className={`w-5 h-5 transition-colors duration-300 ${language === 'id' ? 'text-white' : 'text-white/60'
+                  }`} viewBox="0 0 24 24" fill="currentColor">
+                  {/* Indonesian flag - red on top, white on bottom */}
+                  <path d="M3 5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V12H3V5Z" opacity="0.7" />
+                  <path d="M3 12H21V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V12Z" opacity="0.3" />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -143,6 +157,19 @@ const Navbar = () => {
                   <circle cx="9.6" cy="11.5" r="0.3" fill="currentColor" opacity="0.3" />
                   <circle cx="10.4" cy="11.5" r="0.3" fill="currentColor" opacity="0.3" />
                   <rect x="9.3" y="12.8" width="1.4" height="0.5" fill="currentColor" opacity="0.3" />
+                </svg>
+              </button>
+
+              <button
+                onClick={() => setLanguage('id')}
+                className={`p-1 rounded-full transition-all duration-300 ${language === 'id' ? 'bg-white/20' : 'hover:bg-white/10'
+                  }`}
+                aria-label="ID"
+              >
+                <svg className={`w-4 h-4 ${language === 'id' ? 'text-white' : 'text-white/60'}`} viewBox="0 0 24 24" fill="currentColor">
+                  {/* Indonesian flag - red on top, white on bottom */}
+                  <path d="M3 5C3 3.89543 3.89543 3 5 3H19C20.1046 3 21 3.89543 21 5V12H3V5Z" opacity="0.7" />
+                  <path d="M3 12H21V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V12Z" opacity="0.3" />
                 </svg>
               </button>
             </div>
